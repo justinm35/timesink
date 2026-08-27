@@ -266,6 +266,7 @@ struct SettingsView: View {
                             Spacer()
                             if !appState.isAccessibilityGranted {
                                 Button("Open Settings") {
+                                    AccessibilityHelper.requestAccessibility()
                                     AccessibilityHelper.openAccessibilitySettings()
                                 }
                                 .buttonStyle(.bordered)

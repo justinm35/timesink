@@ -205,8 +205,10 @@ actor ActivityMonitor {
             return (windowTitle, .terminalPane)
         }
 
-        // Generic app
-        return (nil, .app)
+        // Generic app: use window title as detail for page/document-level tracking
+        let trimmedTitle = windowTitle.trimmingCharacters(in: .whitespacesAndNewlines)
+        let detail = trimmedTitle.isEmpty ? nil : trimmedTitle
+        return (detail, .app)
     }
 
     // MARK: - Record Management
